@@ -13,7 +13,7 @@ echo 清理完成！
 echo.
 
 echo [2/3] 开始打包程序...
-pyinstaller --onefile --windowed --name "CAD看图工具" ^
+python -m PyInstaller --onefile --windowed --name "CAD看图工具" ^
     --hidden-import=ezdxf ^
     --hidden-import=ezdxf.addons ^
     --hidden-import=ezdxf.addons.drawing ^
