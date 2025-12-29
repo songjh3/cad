@@ -3,3 +3,4 @@ ezdxf>=1.1.0
 matplotlib>=3.7.0
 numpy>=1.24.0
 pyinstaller>=6.0.0
+# dwg2dxf  # 可选：如果需要DWG转换功能

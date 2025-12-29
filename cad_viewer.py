@@ -213,8 +213,31 @@ class CADViewer(QMainWindow):
             self.statusBar.showMessage(f"正在加载: {os.path.basename(file_path)}...")
             QApplication.processEvents()
             
-            # 读取DWG/DXF文件
-            self.doc = ezdxf.readfile(file_path)
+            # 检查文件格式
+            file_ext = os.path.splitext(file_path)[1].lower()
+            
+            if file_ext == '.dwg':
+                # DWG格式需要特殊处理
+                try:
+                    # 尝试直接读取（ezdxf 1.1+支持部分DWG）
+                    self.doc = ezdxf.readfile(file_path)
+                except Exception as dwg_error:
+                    error_msg = (
+                        f"无法直接读取DWG文件。\n\n"
+                        f"原因：{str(dwg_error)}\n\n"
+                        f"解决方案：\n"
+                        f"1. 使用AutoCAD或其他CAD软件将DWG转换为DXF格式\n"
+                        f"2. 使用DWG版本较低的文件（R2000-R2018）\n"
+                        f"3. 下载并安装ODA File Converter进行转换\n\n"
+                        f"提示：本工具完美支持DXF格式文件"
+                    )
+                    QMessageBox.warning(self, "DWG格式限制", error_msg)
+                    self.statusBar.showMessage("DWG文件打开失败，请转换为DXF格式")
+                    return
+            else:
+                # DXF格式直接读取
+                self.doc = ezdxf.readfile(file_path)
+            
             self.current_file = file_path
             
             # 渲染图纸

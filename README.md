@@ -4,13 +4,41 @@
 
 ## 功能特性
 
-- ✅ 支持DWG和DXF文件格式
+- ✅ **完美支持DXF格式**
+- ⚠️ **部分支持DWG格式**（见下方说明）
 - ✅ 拖拽打开文件
 - ✅ 鼠标滚轮缩放
 - ✅ 鼠标左键拖拽平移
 - ✅ 图层列表显示
 - ✅ 深色主题界面
 - ✅ 工具栏快捷操作
+
+## DWG文件支持说明
+
+### 为什么DWG支持有限？
+
+DWG是Autodesk的专有二进制格式，完整支持需要商业授权。本工具使用的ezdxf库：
+- ✅ **完美支持DXF格式**（所有版本）
+- ⚠️ **有限支持DWG格式**（仅R2000-R2018部分版本）
+
+### 如何打开DWG文件？
+
+**方案1：转换为DXF格式（推荐）**
+1. 使用AutoCAD: 文件 → 另存为 → DXF格式
+2. 使用免费工具: **DWG TrueView** 或 **ODA File Converter**
+3. 在线转换: CloudConvert、Zamzar等网站
+
+**方案2：直接尝试打开**
+- 本工具会尝试直接读取DWG文件
+- 如果失败，会提示转换为DXF格式
+- 建议使用R2000-R2013版本的DWG文件
+
+### 推荐工具
+
+**ODA File Converter（免费）**
+- 下载地址: https://www.opendesign.com/guestfiles/oda_file_converter
+- 批量转换DWG ↔ DXF
+- 支持所有DWG版本
 
 ## 安装依赖
 
