@@ -1,14 +1,17 @@
 @echo off
 chcp 65001 >nul
+cd /d %~dp0
 echo ====================================
 echo CAD看图工具 - 环境配置脚本
 echo ====================================
+echo.
+echo 当前目录: %CD%
 echo.
 
 echo 正在安装依赖包...
 echo 使用清华大学镜像源加速下载
 echo.
-pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -r "%~dp0requirements.txt" -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 if %errorlevel% neq 0 (
     echo.
